@@ -1,7 +1,7 @@
 let currentImageIndex = 0;
 const images = [
     {
-        src: 'photo101.jpg',
+        src: 'Photo101.jpg',
         alt: 'Hannes Östlund - Utan titel (Endymion) (silvergelatinfotografi, tonat i guldklorid, 2024–2025)',
         title: 'Utan titel (Endymion)',
         year: '2024–2025',
@@ -9,7 +9,7 @@ const images = [
         dimensions: '80 x 110 mm'
     },
     {
-        src: 'photo2.png',
+        src: 'Photo2.png',
         alt: 'Hannes Östlund - Utan titel (glasnegativ, silvergelatin på glas, 2023)',
         title: 'Utan titel',
         year: '2023',
@@ -25,7 +25,7 @@ const images = [
         dimensions: '88 x 119 x 2 mm'
     },
     {
-        src: 'photo4.png',
+        src: 'Photo4.png',
         alt: 'Hannes Östlund - Utan titel (glasnegativ, silvergelatin på glas, 2024)',
         title: 'Utan titel',
         year: '2024',
@@ -33,7 +33,7 @@ const images = [
         dimensions: '88 x 119 x 2 mm'
     },
     {
-        src: 'photo5.png',
+        src: 'Photo5.png',
         alt: 'Hannes Östlund - Utan titel (glasnegativ, silvergelatin på glas, 2024)',
         title: 'Utan titel',
         year: '2024',
@@ -41,7 +41,7 @@ const images = [
         dimensions: '88 x 119 x 2 mm'
     },
     {
-        src: 'photo6.png',
+        src: 'Photo6.png',
         alt: 'Hannes Östlund - Utan titel (Endymion) (glasnegativ, silvergelatin på glas, 2024)',
         title: 'Utan titel',
         year: '2024',
@@ -49,7 +49,7 @@ const images = [
         dimensions: '88 x 119 x 2 mm'
     },
     {
-        src: 'photo7.png',
+        src: 'Photo7.png',
         alt: 'Hannes Östlund - Utan titel (glasnegativ, silvergelatin på glas, 2024)',
         title: 'Utan titel',
         year: '2024',
@@ -57,7 +57,7 @@ const images = [
         dimensions: '180 x 240 x 2 mm'
     },
     {
-        src: 'photo8.png',
+        src: 'Photo8.png',
         alt: 'Hannes Östlund - Utan titel (glasnegativ, silvergelatin på glas, 2025)',
         title: 'Utan titel',
         year: '2025',
