@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Lägg till Font Awesome så att Instagram-ikonen visas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles_en.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hannes Östlund</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Playfair+Display&display=swap" rel="stylesheet">
+
+       <!-- Schema.org för sökmotorer -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Hannes Östlund",
+      "jobTitle": "Artist",
+      "sameAs": "https://www.instagram.com/ostlundhannes",
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Malmö Art Academy"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Konstskolan, Ölands Folkhögskola"
+        }
+      ],
+      "birthPlace": {
+        "@type": "Place",
+        "name": "Uppsala, Sverige"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Malmö",
+        "addressCountry": "SE"
+      },
+      "image": "URL till din profilbild eller en annan bild som representerar dig",
+      "url": "URL till din portfolio-webbplats",
+      "description": "Artist who works with photography, based in Malmö, Sweden."
+    }
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <h2>Hannes Östlund</h2>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showTab('works')">Practice</a></li>
+                <li><a href="#" onclick="showTab('cv')">CV</a></li>
+                <li><a href="#" onclick="showTab('contact')">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Språkknapp som länkar till den svenska versionen -->
+        <div class="language-switch">
+            <a href="index_sv.html">Svenska</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Works Section -->
+        <section id="works" class="tab">
+
+            <!-- Galleriets stora bild med overlay -->
+            <div class="large-image-container">
+                <div class="image-wrapper">
+                    <img id="largeImage" src="photo101.jpg" alt="Hannes Östlund - Untitled (Endymion) (silver gelatin contact print, toned in gold chloride, 2024–2025)">
+                    <div class="image-overlay" id="imageOverlay">
+                        <div id="galleryOverlayText"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horisontell scroll för thumbnails -->
+            <div class="thumbnails-wrapper">
+                <div class="thumbnails">
+                    <img src="photo101.jpg" alt="Hannes Östlund - Untitled (Endymion) (silver gelatin contact print, toned in gold chloride, 2024–2025)" onclick="changeImage('photo101.jpg', 0)">
+                    <img src="photo2.png" alt="Thumbnail 2" onclick="changeImage('photo2.png', 1)">
+                    <img src="photo3.png" alt="Thumbnail 3" onclick="changeImage('photo3.png', 2)">
+                    <img src="photo4.png" alt="Thumbnail 4" onclick="changeImage('photo4.png', 3)">
+                    <img src="photo5.png" alt="Thumbnail 5" onclick="changeImage('photo5.png', 4)">
+                    <img src="photo6.png" alt="Thumbnail 6" onclick="changeImage('photo6.png', 5)">
+                    <img src="photo7.png" alt="Thumbnail 7" onclick="changeImage('photo7.png', 6)">
+                    <img src="photo8.png" alt="Thumbnail 8" onclick="changeImage('photo8.png', 7)">
+                </div>
+            </div>
+            <!-- Nytt textelement nedanför galleriet -->
+            <div class="text-below-gallery">
+                <p>
+                    <h1><i>Silver is blackened by light, made insensitive, refined in a bath of gold (</i>sel d'or<i>)</i></h1>
+                    <br>
+                     It is in the technological youth of photography that its entanglement with time is most evident. Therefore, the glass negative lends itself to artistic studies of this connection. There is a potential in the negative: an unrealized archetypal image that can give rise to something. Thus, through exposure, a suite of miniature subjects emerges. At any moment, potential can be realized, through the final stage of photography: silver is blackened by light, made insensitive, refined in a bath of gold (<i>sel d’or</i>)–parts of the silver are replaced by the purest of metals. The subject is immortalized. 
+                </p>
+            </div>
+
+                        <!-- Ensam bild utan galleri -->
+            <div class="image-wrapper photo102">
+                <img id="photo102" src="Photo102.png" alt="Photo 102" style="max-width: 100%; display: block;">
+                <div class="image-overlay photo101-overlay">
+                    <div id="singleOverlayText">
+                        <p><i>Untitled (Endymion)</i><br>2024<br>Silver gelatine glass negative <br>180 x 240 x 2 mm</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="tab" style="display: none;">
+    <div class="content-center">
+        <!-- Porträttbild med overlayeffekt -->
+        <div class="image-wrapper porträtt">
+            <img id="portrait" src="Porträtt.png" alt="Porträtt" style="max-width: 100%; display: block;">
+            <div class="image-overlay porträtt-overlay">
+                <div id="singleOverlayText">
+                    <p>Photo: Britt Dalspång Östlund</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <center>
+            <a href="https://www.instagram.com/ostlundhannes" target="_blank" class="instagram-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <p><span id="emailPlaceholder"></span></p>
+            <p>+46765950881</p>
+        </center>
+    </div>
+</section>
+
+        <!-- CV Section -->
+        <section id="cv" class="tab" style="display: none;">
+            <div class="content-center">
+                <h7><b>Education</b></h7>
+                <br><br>
+                <p>2023-2025 Master of Fine Arts, Malmö Art Academy, Sweden</p>
+                <br>
+                <p>2020-2023 Bachelor of Fine Arts, Malmö Art Academy, Sweden</p>
+                <br>
+                <p>2012-2014 Konstskolan I–II, Ölands folkhögskola, Sweden</p>
+                <br><br>
+                <p><center>*</center></p>
+                <br><br>
+                <h7><b>Selected exhibitions</b></h7>
+                <br><br>
+                <p>2025 (upcoming: 30/8–28/9) Skissernas Museum/Museum of Artistic Process and Public Art (group), Lund, Sweden</p>
+                <br>
+                <p>2025 (upcoming: 25/4–10/5) <i>Essence of Desire</i> (solo), Master's degree exhibition, Gallery KHM1, Malmö, Sweden</p>
+                <br>
+                <p>2020-2025 Annual exhibitions, Malmö Art Academy, Sweden</p>
+                <br>
+                <p>2023 Bachelor's degree exhibition (group), Gallery KHM1, Malmö, Sweden</p>
+                <br>
+                <p>2021 <i>Old News</i> (group), Celsius Projects, Malmö, Sweden</p>
+                <br><br>
+                <p><center>*</center></p>
+                <br><br>
+                <h7><b>Publications and text works</b></h7>
+                <br><br>
+                <p>2025 Exhibition text for Marcus Wallström's <i>Coming Closer</i> at Gallery KHM1, Malmö, Sweden
+    <a href="Utställningstext (Marcus Wallström–Coming Closer, Galleri KHM1, 2025).pdf" target="_blank" rel="noopener noreferrer" title="Öppna i ny flik" style="margin-left: 6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  </a>
+                </p>
+                <br>
+                <p>2023 "Their Hands Graze Each Other At the Chain" (Bachelor's degree essay), published in <i>Malmö Art Academy 2022–2023</i>
+    <a href="Malmö Art Academy 2022–2023.pdf#page=167" target="_blank" rel="noopener noreferrer" title="Öppna i ny flik" style="margin-left: 6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  </a>
+                </p>
+                <br><br>
+                <p><center>*</center></p>
+                <br><br>
+                <h7><b>Stipends and grants</b></h7>
+                <br><br>
+                <p>2024 Study grant, Stiftelsen AAA</p>
+                <br><br>
+                <p><center>*</center></p>
+                <br><br>
+                <p>Born 1993 in Uppsala, Sweden. Based in Malmö, Sweden.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hannes Östlund</p>
+    </footer>
+
+    <script src="script_en.js"></script>
+</body>
+</html>
