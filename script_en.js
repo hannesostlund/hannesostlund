@@ -43,7 +43,7 @@ const images = [
     {
         src: 'Photo6.png',
         alt: 'Hannes Östlund - Untitled (Endymion) (silver gelatin glass negative, 2024)',
-        title: 'Untitled',
+        title: 'Untitled (Endymion)',
         year: '2024',
         material: 'Silver gelatin glass negative',
         dimensions: '88 x 119 x 2 mm'
