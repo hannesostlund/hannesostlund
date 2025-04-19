@@ -43,7 +43,7 @@ const images = [
     {
         src: 'Photo6.png',
         alt: 'Hannes Östlund - Utan titel (Endymion) (glasnegativ, silvergelatin på glas, 2024)',
-        title: 'Utan titel',
+        title: 'Utan titel (Endymion)',
         year: '2024',
         material: 'Glasnegativ (silvergelatin på glas)',
         dimensions: '88 x 119 x 2 mm'
