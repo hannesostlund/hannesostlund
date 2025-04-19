@@ -1,47 +1,7 @@
 let currentImageIndex = 0;
 const images = [
     {
-        src: 'Photo101.jpg',
-        alt: 'Hannes Östlund - Untitled (Endymion) (silver gelatin contact print, toned in gold chloride, 2024–2025)',
-        title: 'Untitled (Endymion)',
-        year: '2024–2025',
-        material: 'Silver gelatin contact print, toned in gold chloride',
-        dimensions: '80 x 110 mm'
-    },
-    {
-        src: 'Photo2.png',
-        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2023)',
-        title: 'Untitled',
-        year: '2023',
-        material: 'Silver gelatin glass negative',
-        dimensions: '88 x 119 x 2 mm'
-    },
-    {
-        src: 'Photo3.png',
-        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
-        title: 'Untitled',
-        year: '2024',
-        material: 'Silver gelatin glass negative',
-        dimensions: '88 x 119 x 2 mm'
-    },
-    {
-        src: 'Photo4.png',
-        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
-        title: 'Untitled',
-        year: '2024',
-        material: 'Silver gelatin glass negative',
-        dimensions: '88 x 119 x 2 mm'
-    },
-    {
-        src: 'Photo5.png',
-        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
-        title: 'Untitled',
-        year: '2024',
-        material: 'Silver gelatin glass negative',
-        dimensions: '88 x 119 x 2 mm'
-    },
-    {
-        src: 'Photo6.png',
+        src: 'Photo1.webp',
         alt: 'Hannes Östlund - Untitled (Endymion) (silver gelatin glass negative, 2024)',
         title: 'Untitled (Endymion)',
         year: '2024',
@@ -49,7 +9,39 @@ const images = [
         dimensions: '88 x 119 x 2 mm'
     },
     {
-        src: 'Photo7.png',
+        src: 'Photo2.webp',
+        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2023)',
+        title: 'Untitled',
+        year: '2023',
+        material: 'Silver gelatin glass negative',
+        dimensions: '88 x 119 x 2 mm'
+    },
+    {
+        src: 'Photo3.webp',
+        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
+        title: 'Untitled',
+        year: '2024',
+        material: 'Silver gelatin glass negative',
+        dimensions: '88 x 119 x 2 mm'
+    },
+    {
+        src: 'Photo4.webp',
+        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
+        title: 'Untitled',
+        year: '2024',
+        material: 'Silver gelatin glass negative',
+        dimensions: '88 x 119 x 2 mm'
+    },
+    {
+        src: 'Photo5.webp',
+        alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
+        title: 'Untitled',
+        year: '2024',
+        material: 'Silver gelatin glass negative',
+        dimensions: '88 x 119 x 2 mm'
+    },
+    {
+        src: 'Photo6.webp',
         alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2024)',
         title: 'Untitled',
         year: '2024',
@@ -57,13 +49,13 @@ const images = [
         dimensions: '180 x 240 x 2 mm'
     },
     {
-        src: 'Photo8.png',
+        src: 'Photo7.webp',
         alt: 'Hannes Östlund - Untitled (silver gelatin glass negative, 2025)',
         title: 'Untitled',
         year: '2025',
         material: 'Silver gelatin glass negative',
         dimensions: '180 x 240 x 2 mm'
-    }
+    },
 ];
 
 // Globala variabler för zoom och pan
