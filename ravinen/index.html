@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannes Östlund – Rotad – Edstrandska stiftelsen 75 år, RAVINEN, 2026</title>
+
+<style>
+:root {
+  --bg:#fff;
+  --fg:#111;
+  --gap:2rem;
+  --max-width:640px;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  margin:0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.name {
+  font-size: 1rem;
+  letter-spacing: 0em;
+  font-weight: ;
+}
+
+nav {
+  display: flex;
+  white-space: nowrap;
+  gap: 0.85rem; /* avstånd mellan flikarna */
+}
+
+nav a {
+  margin-right: 0; /* viktigt: neutraliserar gammal spacing */
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+/* SPRÅK */
+.lang {
+  display: flex;
+  white-space: nowrap;
+  padding-left: 0.35rem;
+}
+
+.lang button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: .35;
+  padding: 0 0.15rem;
+}
+
+.lang button.active {
+  opacity: 1;
+}
+
+/* ===== MAIN ===== */
+.page-title {
+  max-width: var(--max-width);
+  margin:0 auto 1rem auto;
+  padding:0 1rem;
+  font-size: 1rem;
+}
+
+.back-link {
+  display:inline-block;
+  margin-top:.4rem;
+  margin-bottom:1.5rem;
+  font-size:1rem;
+  text-decoration:none;
+  color:inherit;
+  opacity:.4;
+}
+
+.page-title #titleLine {
+  margin-bottom:0rem;
+}
+
+.page-title p {
+  margin-bottom:1.5rem;
+  font-size:1rem;
+}
+
+.gallery {
+  max-width: var(--max-width);
+  margin:0 auto;
+  padding:0 1rem;
+  display:grid;
+  row-gap:var(--gap);
+}
+
+.gallery-item {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.gallery-item img {
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+.gallery-item figcaption {
+  margin-top:.5rem;
+  font-size:1rem;
+  text-align:center;
+  opacity:.8;
+}
+
+/* Desktop och surfplatta: stående bilder */
+@media (min-width: 601px) {
+  .gallery-item {
+    align-items: center;
+  }
+
+  .gallery-item.portrait img {
+    max-height:80vh;
+    width:auto;
+    max-width:600px;
+  }
+}
+
+/* Mobil: stående bilder fyller bredden */
+@media (max-width: 600px) {
+  .gallery-item.portrait img {
+    width:100%;
+    height:auto;
+  }
+}
+
+/* Mobil i liggande läge: stående bilder blir lite större */
+@media (min-width: 601px) and (max-width: 1000px) {
+  .gallery-item.portrait img {
+    max-width: 60vw;
+    max-height:200vh;
+  }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset:0;
+  background: rgba(255,255,255,1);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index:1000;
+  padding:1rem;
+  touch-action: pan-y;
+}
+
+.lightbox img {
+  max-width:90vw;
+  max-height:70vh;
+  object-fit:contain;
+  display:block;
+}
+
+/* Symboler - FIXERADE i viewport */
+.lb-prev, .lb-next, .lb-close, .lightbox-counter {
+  position: fixed;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(0,0,0,0.3);
+  padding:15px;
+  z-index:1001;
+  user-select:none;
+  font-weight:200;
+}
+
+.lb-prev, .lb-next {
+  top:45%;
+  transform:translateY(-50%);
+  font-size:1.5rem;
+}
+
+.lb-prev { left:40px; }
+.lb-next { right:40px; }
+
+.lb-close { top:20px; right:40px; font-size:0.9rem; }
+.lightbox-counter { top:20px; left:40px; font-size:0.9rem; }
+
+/* Bildtext (lightbox) */
+.lightbox-caption {
+  margin-top:1.5rem;
+  font-size:1rem;
+  text-align:center;
+  z-index:1001;
+}
+
+/* Mobil: döljer symboler */
+@media (pointer: coarse) {
+  .lb-close, .lb-prev, .lb-next, .lightbox-counter { display:none; }
+}
+
+/* Text efter galleriet */
+.after-gallery {
+  max-width: var(--max-width);
+  margin:0 auto;
+  padding:0 1rem 3rem 1rem;
+}
+
+.after-gallery p {
+  font-size:1rem;
+  line-height:1.5;
+  opacity:.9;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.35); /* samma grå som header-symboler */
+  margin: 3rem 0 1rem;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0vh;
+}
+
+/* ---------- Make site wider on large viewports (≥ MacBook Air) ---------- */
+/* breakpoint 1440px — change this number if you prefer a different threshold */
+@media (min-width: 1440px) {
+  /* Override the root max-width variable used throughout the site */
+  :root {
+    --max-width: 50vw;
+  }
+  .gallery-item.portrait img {
+  max-width: 50vw;
+  max-height:80vh;
+  }
+
+  /* Ensure main containers that use var(--max-width) center correctly */
+  .header-inner,
+  main,
+  .gallery,
+  .page-title,
+  .after-gallery,
+  .site-footer {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* If any page has inline style="max-width:640px" (seen in project pages),
+     we must override that inline value. Limit the selector to only the known
+     case to avoid unintended wide overrides elsewhere. */
+  .page-title > div[style] {
+    max-width: 60vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+</style>
+
+<link rel="preload" as="image" href="images/hannesostlund1.jpg">
+<link rel="preload" as="image" href="images/hannesostlund2.jpg">
+
+</head>
+
+<body>
+<header>
+  <div class="header-inner">
+    <div class="name">Hannes Östlund</div>
+    <nav>
+      <a href="../index.html" data-active-sv data-active-en><span data-sv>Praktik</span><span data-en style="display:none">Practice</span></a>
+      <a href="../cv.html"><span data-sv>CV</span><span data-en style="display:none">CV</span></a>
+      <a href="../kontakt.html"><span data-sv>Kontakt</span><span data-en style="display:none">Contact</span></a>
+    </nav>
+    <div class="lang">
+      <button id="sv" aria-pressed="true">🇸🇪</button>
+      <button id="en" aria-pressed="false">🇬🇧</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-title">
+  <div style="max-width:640px; margin:0 auto;">
+    <a href="../index.html" class="back-link" id="backLink"></a>
+  </div>
+  <div id="titleLine"></div><br>
+  <p id="essayText"></p>
+</section>
+
+<main>
+  <section class="gallery" id="gallery"></section>
+
+  <!-- Textstycke under bildserien -->
+  <section class="after-gallery" id="afterGallery">
+    <p id="afterText"></p>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <button class="lb-prev" aria-label="Previous">‹</button>
+  <button class="lb-next" aria-label="Next">›</button>
+  <img src="">
+  <div class="lightbox-counter"></div>
+  <div class="lightbox-caption"></div>
+  <div class="lightbox-caption" id="lbCaption"></div>
+</div>
+
+<footer class="site-footer">
+  © 2026 Hannes Östlund
+</footer>
+
+<script>
+const texts = {
+  sv: {
+    back:"← tillbaka",
+    title:"<b><i>ROTAD – Edstrandska stiftelsen 75 år</i><br>Grupputställning, RAVINEN, Båstad, 2026</b>",
+    essay:``,
+    captions:["Installationsbild<br>(t v ett verk av Jens Fänge, t h ett av Marcus Matt)","Installationsbild<br>(t v ett verk av Jens Fänge, t h ett av Marcus Matt)","Installationsbild, <i>Negativ nr 8</i>","Installationsbild, <i>Negativ nr 18</i>",
+              "<i>Negativ nr 8</i>, 2024.<br>Glasnegativ (silvergelatin på glas),<br>88 x 119 x 2 mm","<i>Negativ nr 18</i>, 2024.<br>Glasnegativ (silvergelatin på glas),<br>180 x 240 x 2 mm","Negativ 10","Negativ 11",
+              "Negativ 15 (Endymion)","Negativ 16 (Endymion)",
+              "Negativ 18","Negativ 20"],
+    after:"<br><br><center>*</center><br><br>Curator: Laura Goldschmidt<br><br>Andra konstnärer i utställningen: Brita af Klercker (1906–2001), Ola Billgren (1940–2001), Cecilia Edefalk (f. 1954), Olafur Eliasson (f. 1967), Matts Leiderstam (f. 1956), Elmgreen & Dragset (f. 1961, 1969), Miriam Bäckström (f. 1967), Astrid Svangren (f. 1972), Nathalie Djurberg & Hans Berg (f. 1978, 1978), Luca Lee Frei (f. 1976), Andreas Eriksson (f. 1975), Nina Canell (f. 1979), Tamar Guimarães (f. 1967), Jens Fänge (f. 1965), Meriç Algün (f. 1983), Ingela Ihrman (f. 1985), Tarik Kiswanson (f. 1986), Marcus Matt (f. 1992), Clara Gesang-Gottowt (f. 1985)<br><br>"
+  },
+  en: {
+    back:"← back",
+    title:"<b><i>ROOTED – The Edstrand Foundation 75 Years</i><br>Group exhibition<br>RAVINEN, Båstad (Sweden), 2026</b>",
+    essay:``,
+    captions:["Installation image<br>(to the left is a work by Jens Fänge, to the right one by Marcus Matt)","Installation image<br>(to the left is a work by Jens Fänge, to the right one by Marcus Matt)","Installation image, <i>Negativ nr 8</i>","Installation image, <i>Negativ nr 18</i>",
+              "<i>Negativ nr 8</i>, 2024.<br>Silver gelatin glass negative,<br>88 x 119 x 2 mm","<i>Negativ nr 18</i>, 2024.<br>Silver gelatin glass negative,<br>180 x 240 x 2 mm","Negative no. 10","Negative no. 11",
+              "Negative no. 15 (Endymion)","Negative no. 16 (Endymion)",
+              "Negative no. 18","Negative no. 20"],
+    after:"<br><br><center>*</center><br><br>Curator: Laura Goldschmidt<br><br>Other artists in the exhibition: Brita af Klercker (1906–2001), Ola Billgren (1940–2001), Cecilia Edefalk (b. 1954), Olafur Eliasson (b. 1967), Matts Leiderstam (b. 1956), Elmgreen & Dragset (b. 1961, 1969), Miriam Bäckström (b. 1967), Astrid Svangren (b. 1972), Nathalie Djurberg & Hans Berg (b. 1978, 1978), Luca Lee Frei (b. 1976), Andreas Eriksson (b. 1975), Nina Canell (b. 1979), Tamar Guimarães (b. 1967), Jens Fänge (b. 1965), Meriç Algün (b. 1983), Ingela Ihrman (b. 1985), Tarik Kiswanson (b. 1986), Marcus Matt (b. 1992), Clara Gesang-Gottowt (b. 1985)"
+  }
+};
+
+const svBtn = document.getElementById("sv");
+const enBtn = document.getElementById("en");
+const backLink = document.getElementById("backLink");
+const titleLine = document.getElementById("titleLine");
+const essayText = document.getElementById("essayText");
+const gallery = document.getElementById("gallery");
+const afterText = document.getElementById("afterText");
+
+let currentLang = "sv";
+let currentIndex = 0;
+
+const images = [
+  "images/hannesostlund1.jpg",
+  "images/hannesostlund2.jpg",
+  "images/hannesostlund3.jpg",
+  "images/hannesostlund4.jpg",
+  "images/hannesostlund5.jpg",
+  "images/hannesostlund6.jpg",
+];
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox.querySelector("img");
+const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+const lightboxCounter = lightbox.querySelector(".lightbox-counter");
+const closeBtn = lightbox.querySelector(".lb-close");
+const nextBtn = lightbox.querySelector(".lb-next");
+const prevBtn = lightbox.querySelector(".lb-prev");
+
+// --- Språk ---
+function setLang(lang){
+  currentLang = lang;
+  try { localStorage.setItem("lang", lang); } catch(e){}
+  svBtn.classList.toggle("active", lang==="sv");
+  enBtn.classList.toggle("active", lang==="en");
+  svBtn.setAttribute("aria-pressed", lang==="sv");
+  enBtn.setAttribute("aria-pressed", lang==="en");
+
+  backLink.textContent = texts[lang].back;
+  titleLine.innerHTML = texts[lang].title;
+  essayText.innerHTML = texts[lang].essay;
+  afterText.innerHTML = texts[lang].after;
+
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.classList.toggle('active', a.hasAttribute(`data-active-${lang}`));
+    a.querySelectorAll('[data-sv]').forEach(el=>{
+      el.style.display = (lang === 'sv' ? '' : 'none');
+    });
+    a.querySelectorAll('[data-en]').forEach(el=>{
+      el.style.display = (lang === 'en' ? '' : 'none');
+    });
+  });
+
+  document.querySelectorAll('.gallery-item figcaption').forEach((cap,i)=>{
+    cap.innerHTML = texts[lang].captions[i] || '';
+  });
+
+  if(lightbox.style.display==="flex"){
+    lightboxCaption.innerHTML = texts[lang].captions[currentIndex];
+  }
+}
+
+svBtn.onclick = ()=>setLang("sv");
+enBtn.onclick = ()=>setLang("en");
+
+// --- Skapa galleriet ---
+images.forEach((src,i)=>{
+  const item = document.createElement("figure");
+  item.className = "gallery-item";
+  const img = new Image();
+  img.src = src;
+  img.alt = texts.sv.captions[i] || '';
+  img.dataset.index = i;
+
+  const cap = document.createElement('figcaption');
+  cap.innerHTML = texts[currentLang].captions[i] || '';
+
+  img.onload = ()=>{
+    if(img.naturalWidth>img.naturalHeight) item.classList.add("landscape");
+    else item.classList.add("portrait");
+  }
+
+  item.onclick = ()=>openLightbox(i);
+  item.appendChild(img);
+  item.appendChild(cap);
+  gallery.appendChild(item);
+});
+
+// --- Lightbox ---
+function openLightbox(index){
+  currentIndex = index;
+  updateLightbox();
+  lightbox.style.display="flex";
+}
+
+function updateLightbox(){
+  lightboxImg.src = images[currentIndex];
+  lightboxCaption.innerHTML = texts[currentLang].captions[currentIndex];
+  lightboxCounter.textContent = `${currentIndex+1}/${images.length}`;
+}
+
+// --- Kontroller ---
+function nextImage(){ currentIndex=(currentIndex+1)%images.length; updateLightbox(); }
+function prevImage(){ currentIndex=(currentIndex-1+images.length)%images.length; updateLightbox(); }
+
+closeBtn.onclick = ()=>{ lightbox.style.display="none"; };
+nextBtn.onclick = nextImage;
+prevBtn.onclick = prevImage;
+
+// Keyboard
+document.addEventListener("keydown", e=>{
+  if(lightbox.style.display==="flex"){
+    if(e.key==="ArrowRight") nextImage();
+    else if(e.key==="ArrowLeft") prevImage();
+    else if(e.key==="Escape") lightbox.style.display="none";
+  }
+});
+
+// Touch swipe
+let startX=0;
+lightbox.addEventListener("touchstart", e=>{ startX=e.touches[0].clientX; });
+lightbox.addEventListener("touchend", e=>{
+  let endX=e.changedTouches[0].clientX;
+  if(Math.abs(endX-startX)>50){
+    if(endX<startX) nextImage(); else prevImage();
+  }
+});
+
+// Klick på bakgrund stänger lightbox
+lightbox.addEventListener("click", e=>{
+  if (!e.target.closest('img') &&
+      !e.target.closest('.lb-prev') &&
+      !e.target.closest('.lb-next') &&
+      !e.target.closest('.lb-close') &&
+      !e.target.closest('.lightbox-counter')) {
+    lightbox.style.display='none';
+  }
+});
+
+// Init språk
+document.addEventListener("DOMContentLoaded", ()=>{
+  const saved = localStorage.getItem("lang")==='en'?'en':'sv';
+  setLang(saved);
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.tagName === "IMG") handleImg(node);
+        if (node.querySelectorAll) {
+          node.querySelectorAll("img").forEach(handleImg);
+        }
+      });
+    });
+  });
+
+  const handleImg = (img) => {
+    const allImgs = Array.from(document.querySelectorAll("main img"));
+    const firstImg = allImgs[0];
+    if (img === firstImg) {
+      img.loading = "eager";
+      // Preload första bilden om inte redan gjort
+      if (!document.querySelector(`link[rel="preload"][href="${img.src}"]`)) {
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.href = img.src;
+        document.head.appendChild(link);
+      }
+    } else {
+      img.loading = "lazy";
+    }
+  };
+
+  // Hantera alla befintliga bilder direkt
+  document.querySelectorAll("main img").forEach(handleImg);
+
+  // Observera nya bilder som läggs till i <main>
+  observer.observe(document.querySelector("main"), {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+</html>
