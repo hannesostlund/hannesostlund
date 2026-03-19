@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannes Östlund – Masteressä</title>
+
+<style>
+:root {
+  --bg:#fff;
+  --fg:#111;
+  --gap:2rem;
+  --max-width:640px;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  margin:0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ===== HEADER ===== */
+
+header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.name {
+  font-size: 1rem;
+  letter-spacing: 0em;
+  font-weight: ;
+}
+
+nav {
+  display: flex;
+  white-space: nowrap;
+  gap: 0.85rem; /* avstånd mellan flikarna */
+}
+
+nav a {
+  margin-right: 0; /* viktigt: neutraliserar gammal spacing */
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+/* SPRÅK */
+.lang {
+  display: flex;
+  white-space: nowrap;
+  padding-left: 0.35rem;
+}
+
+.lang button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: .35;
+  padding: 0 0.15rem;
+}
+
+.lang button.active {
+  opacity: 1;
+}
+
+/* ===== MAIN ===== */
+
+.page-title { max-width: var(--max-width); margin:0 auto 1rem auto; padding:0 1rem; font-size: 1rem}
+.back-link { display:inline-block; margin-top:.4rem; margin-bottom:1.5rem; font-size:1rem; text-decoration:none; color:inherit; opacity:.4; }
+.page-title #titleLine { margin-bottom:0rem; }
+.page-title p { margin-bottom:1.5rem; font-size: 1rem}
+
+.viewer-wrap { max-width: var(--max-width); width:100%; margin:0 auto; padding:0 1rem; display:flex; flex-direction:column; row-gap:var(--gap); align-items:center; }
+
+.pdf-controls { width:100%; display:flex; gap:.5rem; align-items:center; justify-content:flex-start; flex-wrap:wrap; margin-bottom:.5rem; }
+.pdf-controls button, .pdf-controls input {
+  background:transparent;
+  border:1px solid rgba(0,0,0,0.08);
+  padding:.35rem .6rem;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:.9rem;
+}
+.pdf-controls input[type="number"]{ width:4.8rem; padding:.35rem .5rem; }
+
+.pdf-controls a { display:flex; align-items:center; justify-content:center; width:32px; height:32px; color:#007BFF; text-decoration:none; }
+.pdf-controls a svg { width:100%; height:100%; fill:#007BFF; }
+
+#pdf-canvas { width:100% !important; max-width:100%; border: none; box-shadow: 0 6px 18px rgba(0,0,0,0.06); background: #fff; display:block; }
+
+.after-gallery { max-width: var(--max-width); margin:0 auto; padding:0 1rem 3rem 1rem; }
+.after-gallery p { font-size:1rem; line-height:1.5; opacity:.9; }
+
+#viewer .error-message {
+  padding: 1rem;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  text-align: center;
+  background: #ffecec;
+  border: 1px solid #f5c2c2;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+/* Mobilanpassning: mindre ikoner och knappar */
+@media (max-width:480px){
+  .pdf-controls a, .pdf-controls button {
+    width:24px;
+    height:24px;
+    padding:0.2rem;
+  }
+  .pdf-controls input[type="number"]{ width:3.5rem; padding:0.2rem .3rem; font-size:.8rem; }
+  .pdf-controls svg { width:100%; height:100%; }
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.35); /* samma grå som header-symboler */
+  margin: 3rem 0 1rem;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0vh;
+}
+
+/* ---------- Make site wider on large viewports (≥ MacBook Air) ---------- */
+/* breakpoint 1440px — change this number if you prefer a different threshold */
+@media (min-width: 1440px) {
+  /* Override the root max-width variable used throughout the site */
+  :root {
+    --max-width: 50vw;
+  }
+
+  /* Ensure main containers that use var(--max-width) center correctly */
+  .header-inner,
+  main,
+  .gallery,
+  .page-title,
+  .after-gallery,
+  .site-footer {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* If any page has inline style="max-width:640px" (seen in project pages),
+     we must override that inline value. Limit the selector to only the known
+     case to avoid unintended wide overrides elsewhere. */
+  .page-title > div[style] {
+    max-width: 60vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<header>
+  <div class="header-inner">
+    <div class="name">Hannes Östlund</div>
+    <nav>
+      <a href="../index.html" data-active-sv data-active-en><span data-sv>Praktik</span><span data-en style="display:none">Practice</span></a>
+      <a href="../cv.html"><span data-sv>CV</span><span data-en style="display:none">CV</span></a>
+      <a href="../kontakt.html"><span data-sv>Kontakt</span><span data-en style="display:none">Contact</span></a>
+    </nav>
+    <div class="lang">
+      <button id="sv" aria-pressed="true">🇸🇪</button>
+      <button id="en" aria-pressed="false">🇬🇧</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-title">
+  <div style="max-width:900px; margin:0 auto;">
+    <a href="../index.html" class="back-link" id="backLink"></a>
+  </div>
+  <div id="titleLine"></div><br>
+  <p id="essayText"></p>
+</section>
+
+<main>
+  <section class="viewer-wrap" id="viewer">
+    <div class="pdf-controls" id="pdfControls">
+      <button id="prevBtn" title="Föregående">‹</button>
+      <button id="nextBtn" title="Nästa">›</button>
+      <label for="pageNum" style="opacity:.6">Sida</label>
+      <input type="number" id="pageNum" min="1" value="201" />
+      <div id="pageCount" style="opacity:.6">/ 0</div>
+      <button id="zoomOut" title="Minska">−</button>
+      <button id="zoomIn" title="Förstora">+</button>
+      <button id="fitWidth" title="Passa bredd">↔</button>
+
+      <!-- Öppna PDF i ny flik - extern-länk ikon -->
+      <a id="openPdf" href="251031_MAA_samlet_25_15_digital_sider_LQ.pdf#page=201" target="_blank" title="Öppna PDF i ny flik">
+        <svg viewBox="0 0 24 24">
+          <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h9v2H6v12h12v-9h2v11H4V4h1z"/>
+        </svg>
+      </a>
+
+      <!-- Ladda ner PDF -->
+      <a id="downloadPdf" href="#" title="Ladda ner PDF">
+        <svg viewBox="0 0 24 24">
+          <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
+        </svg>
+      </a>
+    </div>
+    <canvas id="pdf-canvas"></canvas>
+  </section>
+
+  <section class="after-gallery" id="afterGallery">
+    <p id="afterText"></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  © 2026 Hannes Östlund
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<script>
+const texts = {
+  sv: { back:"← tillbaka", title:"<b><i>Projections: On Desire and Illusion in Photography</i><br>Masteressä, publicerad i konsthögskolan i Malmös årsbok 2024-2025</b>", essay:``, after:"" },
+  en: { back:"← back", title:"<b><i>Projections: On Desire and Illusion in Photography</i><br>Master's degree essay, published in Malmö Art Academy's yearbook 2024-2025</b>", essay:``, after:"" }
+};
+
+// --- Språk ---
+const svBtn = document.getElementById("sv");
+const enBtn = document.getElementById("en");
+const backLink = document.getElementById("backLink");
+const titleLine = document.getElementById("titleLine");
+const essayText = document.getElementById("essayText");
+const afterText = document.getElementById("afterText");
+
+let currentLang = "sv";
+
+function setLang(lang){
+  currentLang = lang;
+  try { localStorage.setItem("lang", lang); } catch(e){}
+  svBtn.classList.toggle("active", lang==="sv");
+  enBtn.classList.toggle("active", lang==="en");
+  svBtn.setAttribute("aria-pressed", lang==="sv");
+  enBtn.setAttribute("aria-pressed", lang==="en");
+
+  backLink.textContent = texts[lang].back;
+  titleLine.innerHTML = texts[lang].title;
+  essayText.innerHTML = texts[lang].essay;
+  afterText.innerHTML = texts[lang].after;
+
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.classList.toggle('active', a.hasAttribute(`data-active-${lang}`));
+    a.querySelectorAll('[data-sv]').forEach(el=>{ el.style.display = (lang==='sv'? '':'none'); });
+    a.querySelectorAll('[data-en]').forEach(el=>{ el.style.display = (lang==='en'? '':'none'); });
+  });
+}
+
+svBtn.onclick = ()=>setLang("sv");
+enBtn.onclick = ()=>setLang("en");
+
+// --- PDF.js ---
+const pdfUrl = '251031_MAA_samlet_25_15_digital_sider_LQ.pdf';
+if(window['pdfjsLib']) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+const canvas = document.getElementById('pdf-canvas');
+const ctx = canvas.getContext('2d');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pageNumInput = document.getElementById('pageNum');
+const pageCountEl = document.getElementById('pageCount');
+const zoomIn = document.getElementById('zoomIn');
+const zoomOut = document.getElementById('zoomOut');
+const fitWidthBtn = document.getElementById('fitWidth');
+
+let pdfDoc = null;
+let currentPage = 201; // start på sida 201
+let pageRendering = false;
+let pageNumPending = null;
+let scale = 1.0;
+let desiredWidth = null;
+
+pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
+  pdfDoc = pdfDoc_;
+  pageCountEl.textContent = '/ ' + pdfDoc.numPages;
+  pageNumInput.max = pdfDoc.numPages;
+  pageNumInput.value = currentPage;
+  renderPage(currentPage);
+}).catch(function(err){
+  console.error('Kunde inte läsa PDF:', err);
+  canvas.style.display = 'none';
+  const wrap = document.getElementById('viewer');
+  const errEl = document.createElement('div');
+  errEl.className = 'error-message';
+  errEl.innerHTML = `<strong>Kunde inte öppna PDF</strong><br>${err.message || err}`;
+  wrap.appendChild(errEl);
+});
+
+function renderPage(num){
+  pageRendering = true;
+  pdfDoc.getPage(num).then(function(page) {
+    const viewport = page.getViewport({ scale:1.0 });
+    const containerWidth = Math.min(document.querySelector('.viewer-wrap').clientWidth, 900-32);
+    scale = desiredWidth ? desiredWidth / viewport.width : Math.max(0.6, containerWidth / viewport.width);
+    const scaledViewport = page.getViewport({ scale: scale });
+    
+    const dpr = window.devicePixelRatio || 1;
+
+// CSS-storlek (det visuella)
+canvas.style.width  = Math.floor(scaledViewport.width) + 'px';
+canvas.style.height = Math.floor(scaledViewport.height) + 'px';
+
+// Bitmap-storlek (faktiska pixlar)
+canvas.width  = Math.floor(scaledViewport.width  * dpr);
+canvas.height = Math.floor(scaledViewport.height * dpr);
+
+// Skala ritkontexten så PDF:en renderas i hög upplösning
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    page.render({ canvasContext: ctx, viewport: scaledViewport }).promise.then(()=>{
+      pageRendering=false;
+      if(pageNumPending!==null){ renderPage(pageNumPending); pageNumPending=null; }
+    });
+  });
+  pageNumInput.value=num;
+  pageCountEl.textContent='/ '+(pdfDoc?pdfDoc.numPages:'?');
+}
+
+function queueRenderPage(num){ if(pageRendering) pageNumPending=num; else renderPage(num); }
+
+prevBtn.addEventListener('click', ()=>{ if(currentPage>1){currentPage--; queueRenderPage(currentPage);} });
+nextBtn.addEventListener('click', ()=>{ if(currentPage<pdfDoc.numPages){ currentPage++; queueRenderPage(currentPage);} });
+pageNumInput.addEventListener('change', (e)=>{ let v=parseInt(e.target.value)||1; v=Math.max(1,Math.min(v,pdfDoc.numPages||v)); currentPage=v; queueRenderPage(currentPage); });
+zoomIn.addEventListener('click', ()=>{ desiredWidth=null; scale=Math.min(scale*1.15,3.0); queueRenderPage(currentPage); });
+zoomOut.addEventListener('click', ()=>{ desiredWidth=null; scale=Math.max(scale/1.15,0.4); queueRenderPage(currentPage); });
+fitWidthBtn.addEventListener('click', ()=>{ desiredWidth=document.querySelector('.viewer-wrap').clientWidth; queueRenderPage(currentPage); });
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='ArrowLeft' && currentPage>1){ currentPage--; queueRenderPage(currentPage); }
+  else if(e.key==='ArrowRight' && pdfDoc && currentPage<pdfDoc.numPages){ currentPage++; queueRenderPage(currentPage); }
+});
+
+window.addEventListener('resize', ()=>{ if(desiredWidth) queueRenderPage(currentPage); });
+
+let touchStartX=0;
+canvas.addEventListener('touchstart', (e)=>{ if(e.touches && e.touches[0]) touchStartX=e.touches[0].clientX; }, {passive:true});
+canvas.addEventListener('touchend', (e)=>{
+  const endX=(e.changedTouches&&e.changedTouches[0])?e.changedTouches[0].clientX:0;
+  if(Math.abs(endX-touchStartX)>50){
+    if(endX<touchStartX && currentPage<pdfDoc.numPages){ currentPage++; queueRenderPage(currentPage); }
+    else if(endX>touchStartX && currentPage>1){ currentPage--; queueRenderPage(currentPage); }
+  }
+},{passive:true});
+
+// --- Download knapp ---
+document.getElementById('downloadPdf').addEventListener('click', function(e){
+  e.preventDefault();
+  const link = document.createElement('a');
+  link.href = '251031_MAA_samlet_25_15_digital_sider_LQ.pdf';
+  link.download = 'Projections_Masteressay.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
+// --- Init språk ---
+document.addEventListener("DOMContentLoaded", ()=>{
+  const saved = localStorage.getItem("lang")==='en' ? 'en' : 'sv';
+  setLang(saved);
+});
+</script>
+
+</body>
+</html>
