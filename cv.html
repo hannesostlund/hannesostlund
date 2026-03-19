@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannes Östlund — CV</title>
+
+<style>
+:root {
+  --bg:#fff;
+  --fg:#111;
+  --line:#eaeaea;
+  --max-width:640px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin:0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ===== HEADER ===== */
+
+header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.name {
+  font-size: 1rem;
+  letter-spacing: 0em;
+  font-weight: ;
+}
+
+nav {
+  display: flex;
+  white-space: nowrap;
+  gap: 0.85rem; /* avstånd mellan flikarna */
+}
+
+nav a {
+  margin-right: 0; /* viktigt: neutraliserar gammal spacing */
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+/* SPRÅK */
+.lang {
+  display: flex;
+  white-space: nowrap;
+  padding-left: 0.35rem;
+}
+
+.lang button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: .35;
+  padding: 0 0.15rem;
+}
+
+.lang button.active {
+  opacity: 1;
+}
+
+/* ===== MAIN ===== */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 0vh;
+  padding: 2rem 1rem 4rem;
+  font-size: 1rem;
+}
+
+section#cv p {
+  font-size: 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.4;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0rem;
+  margin-top: .75rem;
+  margin-bottom: 1.25rem;
+}
+
+li {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Make site wider on large viewports (≥ MacBook Air) ---------- */
+/* breakpoint 1440px — change this number if you prefer a different threshold */
+@media (min-width: 1440px) {
+  /* Override the root max-width variable used throughout the site */
+  :root {
+    --max-width: 50vw;
+  }
+
+  /* Ensure main containers that use var(--max-width) center correctly */
+  .header-inner,
+  main,
+  .gallery,
+  .page-title,
+  .after-gallery,
+  .site-footer {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* If any page has inline style="max-width:640px" (seen in project pages),
+     we must override that inline value. Limit the selector to only the known
+     case to avoid unintended wide overrides elsewhere. */
+  .page-title > div[style] {
+    max-width: 60vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="name">Hannes Östlund</div>
+
+    <nav>
+      <a href="index.html">
+        <span data-sv>Praktik</span>
+        <span data-en style="display:none">Practice</span>
+      </a>
+
+      <a href="cv.html" class="active">
+        <span data-sv>CV</span>
+        <span data-en style="display:none">CV</span>
+      </a>
+
+      <a href="kontakt.html">
+        <span data-sv>Kontakt</span>
+        <span data-en style="display:none">Contact</span>
+      </a>
+    </nav>
+
+    <div class="lang">
+      <button id="sv" class="active" aria-pressed="true">🇸🇪</button>
+      <button id="en" aria-pressed="false">🇬🇧</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="cv">
+
+  <!-- BACK LINK -->
+  <!-- <a href="index.html" class="back-link" id="backLink">← Tillbaka</a> -->
+
+  <!-- INTRO -->
+  <p data-sv>Född 1993 i Uppsala<br>Bosatt i Malmö</p>
+  <p data-en style="display:none">Born 1993 in Uppsala, Sweden<br>Based in Malmö, Sweden</p>
+
+  <br>
+
+  <!-- EDUCATION -->
+  <h3 data-sv>Utbildning</h3>
+  <h3 data-en style="display:none">Education</h3>
+
+  <ul data-sv>
+    <li>2023–2025 Masterexamen i fri konst, Konsthögskolan i Malmö</li>
+    <li>2020–2023 Kandidatexamen i fri konst, Konsthögskolan i Malmö</li>
+    <li>2012–2014 Konstskolan I–II, Ölands folkhögskola</li>
+  </ul>
+
+  <ul data-en style="display:none">
+    <li>2023–2025 Master of Fine Arts, Malmö Art Academy, Sweden</li>
+    <li>2020–2023 Bachelor of Fine Arts, Malmö Art Academy, Sweden</li>
+    <li>2012–2014 Konstskolan I–II, Ölands folkhögskola, Sweden</li>
+  </ul>
+
+  <br>
+
+  <!-- CURRENT -->
+  <h3 data-sv>Pågående och kommande utställningar</h3>
+  <h3 data-en style="display:none">Current and upcoming exhibitions</h3>
+
+  <ul data-sv>
+    <li>2026 (7/2–17/5) <i>ROTAD – Edstrandska Stiftelsen 75 år</i> (grupp), RAVINEN, Båstad</li>
+    <li>2026 (vernissage 1/5) Grupputställning, Galleri Arnstedt, Östra Karup</li>
+  </ul>
+
+  <ul data-en style="display:none">
+    <li>2026 (7/2–17/5) <i>ROOTED – The Edstrand Foundation 75 Years</i> (group), RAVINEN, Båstad, Sweden</li>
+    <li>2026 (opening 1/5) Group exhibition, Gallery Arnstedt, Östra Karup, Sweden</li>
+  </ul>
+
+  <br>
+
+  <!-- PREVIOUS -->
+  <h3 data-sv>Tidigare utställningar</h3>
+  <h3 data-en style="display:none">Previous exhibitions</h3>
+
+  <ul data-sv>
+    <li>2025 <i>Edstrandska stipendieutställningen</i> (grupp), Galleri KHM, Malmö</li>
+    <li>2025 <i>På besök</i> (grupp), Skissernas museum, Lund</li>
+    <li>2025 <i>Essence of Desire</i> (separat), Masterutställning, Galleri KHM1, Malmö</li>
+    <li>2023 Kandidatutställning (grupp), Galleri KHM1, Malmö</li>
+    <li>2021 <i>Old News</i> (grupp), Celsius Projects, Malmö</li>
+    <li>2020–2025 Årliga studentutställningar, konsthögskolan i Malmö</li>
+  </ul>
+
+  <ul data-en style="display:none">
+    <li>2025 <i>Edstrandska stipendieutställningen</i> [the Edstrand foundation grant exhibition] (group), Gallery KHM, Malmö, Sweden</li>
+    <li>2025 <i>Visiting</i> (group), Skissernas Museum / Museum of Artistic Process and Public Art, Lund, Sweden</li>
+    <li>2025 <i>Essence of Desire</i> (solo), Master's degree exhibition, Gallery KHM1, Malmö, Sweden</li>
+    <li>2023 Bachelor's degree exhibition (group), Gallery KHM1, Malmö, Sweden</li>
+    <li>2021 <i>Old News</i> (group), Celsius Projects, Malmö, Sweden</li>
+    <li>2020–2025 Annual student exhibitions, Malmö Art Academy, Sweden</li>
+  </ul>
+
+  <br>
+
+  <!-- TEXTS -->
+  <h3 data-sv>Textarbeten</h3>
+  <h3 data-en style="display:none">Text works</h3>
+
+  <ul data-sv>
+    <li>
+      2025 "Projections: On Desire and Illusion in Photography" (masteressä), publicerad i konsthögskolan i Malmös årsbok 2024-2025
+      <a href="essa/251031_MAA_samlet_25_15_digital_sider_LQ.pdf#page=201" target="_blank" rel="noopener noreferrer">↗</a>
+    </li>    
+    <li>
+      2025 Utställningstext för Marcus Wallströms <i>Coming Closer</i>, Galleri KHM1, Malmö
+      <a href="Utstallningstext_Marcus_Wallstrom.pdf" target="_blank" rel="noopener noreferrer">↗</a>
+    </li>
+    <li>
+      2023 ”Their Hands Graze Each Other At the Chain” (kandidatessä), publicerad i konsthögskolan i Malmös årsbok 2022-2023
+      <a href="Malmo_Art_Academy_2022_2023.pdf#page=167" target="_blank" rel="noopener noreferrer">↗</a>
+    </li>
+  </ul>
+
+  <ul data-en style="display:none">
+    <li>
+      2025 "Projections: On Desire and Illusion in Photography" (Master's degree essay), published in Malmö Art Academy's yearbook 2024-2025
+      <a href="essa/251031_MAA_samlet_25_15_digital_sider_LQ.pdf#page=201" target="_blank" rel="noopener noreferrer">↗</a>
+    </li>      
+    <li>
+      2025 Exhibition text for Marcus Wallström’s <i>Coming Closer</i>, Gallery KHM1, Malmö, Sweden
+      <a href="Utstallningstext_Marcus_Wallstrom.pdf" target="_blank" rel="noopener noreferrer">↗</a>
+    </li>
+    <li>
+      2023 “Their Hands Graze Each Other At the Chain” (Bachelor’s degree essay), published in Malmö Art Academy's yearbook 2022–2023
+      <a href="Malmo_Art_Academy_2022_2023.pdf#page=167" target="_blank" rel="noopener noreferrer">↗</a>
+    </li>
+  </ul>
+
+  <br>
+
+  <!-- GRANTS -->
+  <h3 data-sv>Stipendier</h3>
+  <h3 data-en style="display:none">Grants</h3>
+
+  <ul data-sv>
+    <li>2025 Edstrandska stiftelsens avgångsstipendium</li>
+    <li>2024 Studiestipendium, Stiftelsen AAA</li>
+  </ul>
+
+  <ul data-en style="display:none">
+    <li>2025 The Edstrand foundation, graduation grant</li>
+    <li>2024 Stiftelsen AAA [AAA Foundation], study grant</li>
+  </ul>
+
+</section>
+
+</main>
+
+<script>
+const svBtn = document.getElementById('sv');
+const enBtn = document.getElementById('en');
+const backLink = document.getElementById('backLink');
+
+function setLang(lang) {
+  document.querySelectorAll('[data-sv]')
+    .forEach(el => el.style.display = (lang === 'sv') ? '' : 'none');
+  document.querySelectorAll('[data-en]')
+    .forEach(el => el.style.display = (lang === 'en') ? '' : 'none');
+
+  svBtn.classList.toggle('active', lang === 'sv');
+  enBtn.classList.toggle('active', lang === 'en');
+
+  svBtn.setAttribute('aria-pressed', lang === 'sv');
+  enBtn.setAttribute('aria-pressed', lang === 'en');
+
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('nav a').forEach(a => {
+    a.classList.remove('active');
+  });
+  document.querySelector('nav a[href="cv.html"]').classList.add('active');
+
+  if (backLink) {
+    backLink.textContent = (lang === 'sv') ? '← Tillbaka' : '← Back';
+  }
+
+  try { localStorage.setItem('lang', lang); } catch(e){}
+}
+
+svBtn.onclick = () => setLang('sv');
+enBtn.onclick = () => setLang('en');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'sv';
+  setLang(saved);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannes Östlund – Kontakt</title>
+
+<style>
+:root {
+  --bg:#fff;
+  --fg:#111;
+  --line:#eaeaea;
+  --max-width:640px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin:0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ===== HEADER (EXAKT SOM HUVUDSIDAN) ===== */
+
+header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+}
+
+.name {
+  font-size: 1rem;
+  letter-spacing: 0em;
+}
+
+nav {
+  display: flex;
+  white-space: nowrap;
+  gap: 0.85rem; /* avstånd mellan flikarna */
+}
+
+nav a {
+  margin-right: 0; /* viktigt: neutraliserar gammal spacing */
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+/* SPRÅK */
+.lang {
+  display: flex;
+  white-space: nowrap;
+  padding-left: 0.35rem;
+}
+
+.lang button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: .35;
+  padding: 0 0.15rem;
+}
+
+.lang button.active {
+  opacity: 1;
+}
+
+/* ===== MAIN ===== */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 0vh;
+  padding: 2rem 1rem;
+}
+
+/* ===== CONTACT ===== */
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+/* PORTRAIT */
+
+.portrait {
+  position: relative;
+  cursor: pointer;
+}
+
+.portrait img {
+  max-width: 100%;
+  max-height: 60vh;
+  display: block;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  bottom: -1.1rem;
+  font-size: .9rem;
+  opacity: .6;
+}
+
+/* CONTACT INFO */
+
+.contact-info {
+  font-size: 1rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  align-self: end;
+  align-items: flex-start;
+}
+
+/* Optisk baseline-korrigering (desktop only) */
+@media (min-width: 701px) {
+  .contact-info {
+    transform: translateY(2px);
+  }
+}
+
+.contact-info a,
+.contact-info span {
+  color: #000;
+  text-decoration: none;
+}
+
+/* INSTAGRAM ICON */
+
+.instagram {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.instagram svg {
+  width: 100%;
+  height: 100%;
+  stroke: #000;
+  fill: none;
+  transition: stroke .25s ease;
+}
+
+.instagram:hover svg {
+  stroke: url(#ig-gradient);
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: none;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+.lightbox .caption {
+  position: static;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-info {
+    order: 1;
+    align-items: center; /* Centrerar innehållet */
+    text-align: center;  /* Centrerar texten */
+    align-self: center; /* Centrerar innehållet */
+    transform: none;
+  }
+
+  .caption {
+    position: static;
+    margin-top: .4rem;
+  }
+
+.portrait {
+  position: center;
+}
+
+.portrait img {
+  justify-self: center;
+}
+}
+
+/* ---------- Make site wider on large viewports (≥ MacBook Air) ---------- */
+/* breakpoint 1440px — change this number if you prefer a different threshold */
+@media (min-width: 1440px) {
+  /* Override the root max-width variable used throughout the site */
+  :root {
+    --max-width: 50vw;
+  }
+
+  /* Ensure main containers that use var(--max-width) center correctly */
+  .header-inner,
+  main,
+  .gallery,
+  .page-title,
+  .after-gallery,
+  .site-footer {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* If any page has inline style="max-width:640px" (seen in project pages),
+     we must override that inline value. Limit the selector to only the known
+     case to avoid unintended wide overrides elsewhere. */
+  .page-title > div[style] {
+    max-width: 60vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="name">Hannes Östlund</div>
+
+    <nav>
+      <a href="index.html">
+        <span data-sv>Praktik</span>
+        <span data-en style="display:none">Practice</span>
+      </a>
+      <a href="cv.html">
+        <span data-sv>CV</span>
+        <span data-en style="display:none">CV</span>
+      </a>
+      <a href="kontakt.html" data-active-sv data-active-en>
+        <span data-sv>Kontakt</span>
+        <span data-en style="display:none">Contact</span>
+      </a>
+    </nav>
+
+    <div class="lang">
+      <button id="sv" class="active" aria-pressed="true">🇸🇪</button>
+      <button id="en" aria-pressed="false">🇬🇧</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="contact">
+
+  <div class="portrait" id="portrait">
+    <img src="hannesostlund.jpg" alt="Hannes Östlund - Positiv nr 8">
+    <div class="caption">
+      <span data-sv></span>
+      <span data-en style="display:none"></span>
+    </div>
+  </div>
+
+  <div class="contact-info">
+
+    <a href="https://instagram.com/ostlundhannes"
+       target="_blank"
+       rel="noopener"
+       class="instagram"
+       aria-label="Instagram">
+      <svg viewBox="0 0 24 24" stroke-width="1.5">
+        <defs>
+          <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#feda75"/>
+            <stop offset="25%" stop-color="#fa7e1e"/>
+            <stop offset="50%" stop-color="#d62976"/>
+            <stop offset="75%" stop-color="#962fbf"/>
+            <stop offset="100%" stop-color="#4f5bd5"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="4"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <span id="phone"></span>
+    <span id="email"></span>
+
+
+  </div>
+
+</section>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">×</div>
+  <img src="hannesostlund.jpg" alt="">
+  <div class="caption">
+    <span data-sv><i>Positiv nr 8</i>, 2024 / 2025.<br>Silvergelatinfotografi, tonat i guldklorid,<br>82 x 107 mm</span>
+    <span data-en style="display:none"><i>Positiv nr 8</i>, 2024 / 2025.<br>Silver gelatin photograph, toned in gold chloride,<br>82 x 107 mm</span>
+  </div>
+</div>
+
+
+<script>
+/* OBFUSKERING */
+(function(){
+  const email = 'hannesostlund' + '@' + 'hotmail.com';
+  document.getElementById('email').innerHTML =
+    `<a href="mailto:${email}">${email}</a>`;
+
+  document.getElementById('phone').innerHTML =
+    `<a href="tel:+46765950881">+4676-595 08 81</a>`;
+})();
+
+/* LIGHTBOX */
+const portrait = document.getElementById('portrait');
+const lightbox = document.getElementById('lightbox');
+const closeBtn = document.getElementById('lightboxClose');
+
+portrait.onclick = () => lightbox.classList.add('active');
+closeBtn.onclick = () => lightbox.classList.remove('active');
+lightbox.onclick = e => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+};
+
+/* LANGUAGE */
+const svBtn = document.getElementById('sv');
+const enBtn = document.getElementById('en');
+
+function setLang(lang) {
+  document.querySelectorAll('[data-sv]')
+    .forEach(el => el.style.display = lang === 'sv' ? '' : 'none');
+  document.querySelectorAll('[data-en]')
+    .forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+
+  svBtn.classList.toggle('active', lang === 'sv');
+  enBtn.classList.toggle('active', lang === 'en');
+
+  document.querySelectorAll('nav a').forEach(a => {
+    a.classList.toggle('active', a.hasAttribute(`data-active-${lang}`));
+  });
+
+  try { localStorage.setItem('lang', lang); } catch(e){}
+}
+
+svBtn.onclick = () => setLang('sv');
+enBtn.onclick = () => setLang('en');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('lang') === 'en' ? 'en' : 'sv';
+  setLang(saved);
+});
+</script>
+
+</body>
+</html>
