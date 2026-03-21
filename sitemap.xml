@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Hemsida -->
+  <url>
+    <loc>https://hannesostlund.com/</loc>
+  </url>
+  <!-- Praktik / utställningar -->
+  <url>
+    <loc>https://hannesostlund.com/ravinen/</loc>
+  </url>
+  <url>
+    <loc>https://hannesostlund.com/edstrandska/</loc>
+  </url>
+  <url>
+    <loc>https://hannesostlund.com/essence-of-desire/</loc>
+  </url>
+  <url>
+    <loc>https://hannesostlund.com/pa-besok/</loc>
+  </url>
+  <url>
+    <loc>https://hannesostlund.com/essa/</loc>
+  </url>
+  <!-- CV och Kontakt -->
+  <url>
+    <loc>https://hannesostlund.com/cv.html</loc>
+  </url>
+  <url>
+    <loc>https://hannesostlund.com/kontakt.html</loc>
+  </url>
+</urlset>
